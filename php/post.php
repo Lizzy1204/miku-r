@@ -5,18 +5,15 @@
             PHP允许调用linux系统命令
             PHP执行用户有sudo免密码或者root权限
             基础路径（$basepath）拥有读写执行程序的（777）权限
-        服务器与MIKU本地版本不同点:
-            1.基础路径（$basepath）不同，提交的时候注意
     */
     //垮域名头
     header('Access-Control-Allow-Origin: *');
     //设置文本输出
-    //header("Content-Type:text/html;charset=utf-8");
+    header("Content-Type:text/html;charset=utf-8");
     //设置图片输出头
-    header("Content-Type: image/jpeg;text/html; charset=utf-8");
+    //header("Content-Type: image/jpeg;text/html; charset=utf-8");
     //基础路径
-    //$basepath = "/var/www/html/myweb/miku-r";//本地版
-    $basepath = "/var/www/html/miku-r";//服务器版
+    $basepath = "/var/www/html/miku-r";
     //文件名随机值设置
     $tempNum = rand(0,1000);
     //R脚本基础设置
@@ -45,6 +42,7 @@
     }
     //拼接R脚本
     $rscript = $rscript_h."".$rscript."".$rscript_f;
+    echo "<textarea>$rscript</textarea><br/>";
     //生成R脚本
     writefile("$basepath/temp/$tempNum.R",$rscript);
     function writefile($fname,$str){
@@ -64,6 +62,6 @@
         echo base64_encode($img);
     }
     //删除temp文件(temp.R与temp.jpg)
-    unlink("$basepath/temp/$tempNum.jpg");
-    unlink("$basepath/temp/$tempNum.R");
+    //unlink("$basepath/temp/$tempNum.jpg");
+    //unlink("$basepath/temp/$tempNum.R");
 ?>
