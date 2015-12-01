@@ -11,9 +11,9 @@
     //垮域名头
     header('Access-Control-Allow-Origin: *');
     //设置图片输出头
-    //header("Content-Type: image/jpeg;text/html; charset=utf-8");
+    header("Content-Type: image/jpeg;text/html; charset=utf-8");
     //设置文本输出
-    header("Content-Type:text/html;charset=utf-8");
+    //header("Content-Type:text/html;charset=utf-8");
     //基础路径
     //$basepath = "/var/www/html/myweb/miku-r";//本地版
     $basepath = "/var/www/html/miku-r";//服务器版
