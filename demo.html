@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>如何使用Jquery调用 | 轻松实现R语言+MYSQL+WEB | MIKUScallion</title>
+    <link rel="stylesheet" href="vender/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-header">如何使用Jquery调用?使用下面的代码就可以了<small><a href="index.html">miku-r</a></small></h1>
+    <h2>注意</h2>
+    <p>1.rscript参数的值就是你绘图用的R代码，需要用\n表示换行</p>
+    <p>2.使用“\”与“换行”的方式，让你的R代码结构更好看。</p>
+    <p>3.为防止浏览器缓存，请在调用的时候添加随机时间值。</p>
+    <p>4.建议在本地将R代码测试通过后，再尝试调用此服务。</p>
+    <pre>//远程调用存在些许问题(网络问题,性能问题)
+var basePath = "http://www.mikuscallion.com/miku-r/";
+//var basePath = "";
+$(function(){
+    $.post(basePath+"php/post.php?time="+new Date().getTime(),
+           //直接使用vosmap数据库
+           {"rscript":"plot(dbReadTable(conn, 't_artcourse')$coachID)"},
+           function(data){
+                var $img = $("<img/>");
+                $img.attr("src","data:image/jpeg;base64,"+data);
+                $(".container").append($img);
+           });
+    $.post(basePath+"php/post.php?time="+new Date().getTime(),
+           {"rscript":"\
+                cars <- c(1, 3, 6, 4, 9)\n\
+                plot(cars)\
+           "},
+           function(data){
+                var $img = $("<img/>");
+                $img.attr("src","data:image/jpeg;base64,"+data);
+                $(".container").append($img);
+           });
+});</pre>
+    </div>
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script>
+        //远程调用存在些许问题(网络问题,性能问题)
+        //var basePath = "http://www.mikuscallion.com/miku-r/";
+        var basePath = "";
+        $(function(){
+            $.post(basePath+"php/post.php?time="+new Date().getTime(),
+                   //直接使用vosmap数据库
+                   {"rscript":"plot(dbReadTable(conn, 't_artcourse')$coachID)"},
+                   function(data){
+                        var $img = $("<img/>");
+                        $img.attr("src","data:image/jpeg;base64,"+data);
+                        $(".container").append($img);
+                   });
+            $.post(basePath+"php/post.php?time="+new Date().getTime(),
+                   {"rscript":"\
+                        cars <- c(1, 3, 6, 4, 9)\n\
+                        plot(cars)\
+                   "},
+                   function(data){
+                        var $img = $("<img/>");
+                        $img.attr("src","data:image/jpeg;base64,"+data);
+                        $(".container").append($img);
+                   });
+        });
+    </script>
+</body>
+</html>

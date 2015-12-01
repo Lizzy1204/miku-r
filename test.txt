@@ -1,0 +1,50 @@
+plot(dbReadTable(conn, "t_artcourse")$coachID, type="o", col="blue")
+######################################
+t_testmain = dbReadTable(conn, "t_testmain")
+realscores <- t_testmain$realscore
+plot(realscores, type="o", col="blue")
+######################################
+//导入vosmap数据库
+source /var/www/html/myweb/miku-r/vosmap.sql
+######################################
+gameinfo = dbReadTable(conn, "gameinfo")
+scores <- gameinfo$score
+plot(scores, type="o", col="blue")
+######################################
+setwd("/var/www/html/myweb/miku-r")
+jpeg(file="temp/temp.jpg")
+cars <- c(1, 3, 6, 4, 9)
+plot(cars)
+dev.off()
+######################################
+setwd("/var/www/html/myweb/miku-r")
+jpeg(file="img/test01.jpg")
+##
+cars <- c(1, 3, 6, 4, 9)
+trucks <- c(2, 5, 4, 5, 12)
+plot(cars, type="o", col="blue", ylim=c(0,12)) # ylim控制y轴的范围
+lines(trucks, type="o", pch=22, lty=2, col="red") #添加折线，lty=2表示虚线
+title(main="Autos", col.main="red", font.main=4)
+##
+dev.off()
+#####################################
+setwd("/var/www/html/myweb/miku-r")
+jpeg(file="temp/temp.jpg")
+##
+cars <- c(1, 3, 6, 4, 9)
+trucks <- c(2, 5, 4, 5, 12)
+g_range <- range(0, cars, trucks)
+plot(cars, type="o", col="blue", ylim=g_range, axes=FALSE, ann=FALSE) #axes=FALSE, ann=FALSE表示不绘制坐标轴与标题
+axis(1, at=1:5, lab=c("Mon","Tue","Wed","Thu","Fri"))
+axis(2, las=1, at=4*0:g_range[2])
+# axis()，2表示坐标轴在左侧，at=4*0:g_range[2]表示刻度范围为(0:g_range[2])，#每4个单位显示一个刻度
+box()
+lines(trucks, type="o", pch=22, lty=2, col="red")
+title(main="Autos", col.main="red", font.main=4) #添加总标题
+title(xlab="Days", col.lab=rgb(0,0.5,0)) # 添加x轴标题
+title(ylab="Total", col.lab=rgb(0,0.5,0)) # 添加y轴标题
+legend(1, g_range[2], c("cars","trucks"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);
+# legend(),1,g_range[2]表示图例左上角的坐标；c("cars","trucks")标签，cex=0.8字体的放大倍数
+##
+dev.off()
+
