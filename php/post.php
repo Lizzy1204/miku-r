@@ -15,8 +15,8 @@
     //设置文本输出
     header("Content-Type:text/html;charset=utf-8");
     //基础路径
-    $basepath = "/var/www/html/myweb/miku-r";//本地版
-    //$basepath = "/var/www/html/miku-r";//服务器版
+    //$basepath = "/var/www/html/myweb/miku-r";//本地版
+    $basepath = "/var/www/html/miku-r";//服务器版
     //文件名随机值设置
     $tempNum = rand(0,1000);
     //R脚本基础设置
