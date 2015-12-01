@@ -4,8 +4,7 @@ This is a R+WEB+MYSQL API. You can use ajax to run R script than get the jpeg da
 
 #You can run the demo from.
     http://www.mikuscallion.com/miku-r
-
-#You can download the code and run on your server , my server is very poor.
+    You can download the code and run on your server , my server is very poor.
 
 #The following is my server info , it may help you.
     Ubuntu 14.04 32Bit
