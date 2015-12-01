@@ -17,7 +17,7 @@ This is a R+WEB+MYSQL API. You can use ajax to run R script than get the jpeg da
 #Pass
     This project only can run in Linux.
     In other OS may be have some problems ,for windows, you need to change some code.
-    In linux , your PHP runner must be have the sudo(no password) or root permission.
+    In linux , your PHP runner must be have the sudo(no password) or root permission , and project path have chmod(777) permission.
     You can use the /php/test.php to do test.
     Than download the code and you can see more detail commend with Chinese.
 #Thanks
